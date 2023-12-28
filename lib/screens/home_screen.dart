@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -92,9 +93,32 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
           SliverToBoxAdapter(
             child: Container(
-              height: 1000,
+              height: 1500,
               color: const Color.fromARGB(255, 139, 139, 139),
-              child: const Stack(),
+              child: Stack(
+                children: [
+                  Container(
+                    color: primaryColor,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 120),
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))),
+                  ),
+                  Container(
+                    height: 180,
+                    // width:
+                    margin: EdgeInsets.symmetric(horizontal: 50),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.blue,
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],
