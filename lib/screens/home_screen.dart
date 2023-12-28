@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Container(
                   // color: Colors.black,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 48.0),
+                    padding: const EdgeInsets.only(right: 50.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment:
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         isVisible
                             ? RichText(
                                 text: const TextSpan(
-                                    text: "0",
+                                    text: "500.000",
                                     style: TextStyle(
                                       fontSize: 25,
                                       color: Colors.white,
@@ -64,6 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
+                        SizedBox(
+                          width: 2,
+                        ),
                         GestureDetector(
                           onTap: () {
                             setState(() {
@@ -90,7 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: Container(
               height: 1000,
-              color: Colors.amber,
+              color: const Color.fromARGB(255, 139, 139, 139),
+              child: const Stack(),
             ),
           )
         ],
