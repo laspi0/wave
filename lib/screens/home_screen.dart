@@ -31,14 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 isVisible
-                    ? const Text(
-                        "4.000F",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      )
+                    ? RichText(
+                        text: const TextSpan(
+                            text: "5.000",
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
+                            children: [
+                            TextSpan(
+                                text: "F",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                          ]))
                     : const Text(
                         "••••••••",
                         style: TextStyle(
@@ -47,6 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                RichText(
+                    text: const TextSpan(
+                  children: [],
+                )),
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -56,12 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: isVisible
                       ? const Icon(
                           Icons.visibility_off_rounded,
-                          size: 20,
+                          size: 16,
                           color: Colors.white,
                         )
                       : const Icon(
                           Icons.visibility_rounded,
-                          size: 17,
+                          size: 16,
                           color: Colors.white,
                         ),
                 )
