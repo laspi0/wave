@@ -30,64 +30,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               flexibleSpace: FlexibleSpaceBar(
-                title: Container(
-                  // color: Colors.black,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 50.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment:
-                          CrossAxisAlignment.center, // Ajouter cette ligne
-                      children: [
-                        isVisible
-                            ? RichText(
-                                text: const TextSpan(
-                                    text: "500.000",
-                                    style: TextStyle(
-                                      fontSize: 25,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                    children: [
-                                    TextSpan(
-                                        text: "F",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600,
-                                        ))
-                                  ]))
-                            : const Text(
-                                "••••••••",
-                                style: TextStyle(
-                                  fontSize: 35,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                title: Padding(
+                  padding: const EdgeInsets.only(right: 50.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.center, // Ajouter cette ligne
+                    children: [
+                      isVisible
+                          ? RichText(
+                              text: const TextSpan(
+                                  text: "500.000",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  children: [
+                                  TextSpan(
+                                      text: "F",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ))
+                                ]))
+                          : const Text(
+                              "••••••••",
+                              style: TextStyle(
+                                fontSize: 35,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isVisible = !isVisible;
-                            });
-                          },
-                          child: isVisible
-                              ? const Icon(
-                                  Icons.visibility_off_rounded,
-                                  size: 16,
-                                  color: Colors.white,
-                                )
-                              : const Icon(
-                                  Icons.visibility_rounded,
-                                  size: 16,
-                                  color: Colors.white,
-                                ),
-                        ),
-                      ],
-                    ),
+                            ),
+                      const SizedBox(
+                        width: 2,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isVisible = !isVisible;
+                          });
+                        },
+                        child: isVisible
+                            ? const Icon(
+                                Icons.visibility_off_rounded,
+                                size: 16,
+                                color: Colors.white,
+                              )
+                            : const Icon(
+                                Icons.visibility_rounded,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
               )),
@@ -109,14 +106,48 @@ class _HomeScreenState extends State<HomeScreen> {
                             topRight: Radius.circular(30))),
                   ),
                   Container(
-                    height: 180,
+                    height: 200,
                     // width:
-                    margin: EdgeInsets.symmetric(horizontal: 50),
+                    margin: const EdgeInsets.symmetric(horizontal: 50),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       color: Colors.blue,
                     ),
-                  )
+                    width: MediaQuery.of(context).size.width,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 18, horizontal: 70),
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/code_qr.png",
+                            width: 130,
+                            height: 130,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.photo_camera, size: 14),
+                              SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                "Scanner",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
