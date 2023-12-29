@@ -114,43 +114,114 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.blue,
                     ),
                     width: MediaQuery.of(context).size.width,
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 18, horizontal: 70),
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          borderRadius: BorderRadius.circular(20)),
+                    child: Container(child: cardWidget()),
+                  ),
+                  Positioned(
+                      top: 200,
+                      left: 30,
+                      right: 30,
                       child: Column(
                         children: [
-                          Image.asset(
-                            "assets/images/code_qr.png",
-                            width: 130,
-                            height: 130,
-                          ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.photo_camera, size: 14),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Text(
-                                "Scanner",
-                                style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          )
+                          Container(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              width: double.infinity,
+                              height: 200,
+                              child: GridView(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 4),
+                                shrinkWrap: true,
+                                children: [
+                                  optionWidget(
+                                      icon: Icons.person_2,
+                                      color: Colors.blue,
+                                      text: "Transfert"),
+                                  optionWidget(
+                                      icon: Icons.shopping_cart_sharp,
+                                      color: Colors.orange,
+                                      text: "Paiements"),
+                                  optionWidget(
+                                      icon: Icons.phone_iphone_outlined,
+                                      color: Colors.blue,
+                                      text: "Crédit"),
+                                  optionWidget(
+                                      icon: Icons.account_balance_outlined,
+                                      color: Colors.red,
+                                      text: "Banque"),
+                                  optionWidget(
+                                      icon: Icons.card_giftcard,
+                                      color: Colors.green,
+                                      text: "Cadeaux"),
+                                ],
+                              )),
                         ],
-                      ),
-                    ),
-                  ),
+                      ))
                 ],
               ),
             ),
+            
+          )
+        ],
+      ),
+    );
+  }
+
+  Column optionWidget(
+      {required IconData icon,
+      required MaterialColor color,
+      required String text}) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              color: color.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(50)),
+          child: Icon(
+            icon,
+            size: 40,
+            color: color,
+          ),
+          padding: EdgeInsets.all(8),
+        ),
+        SizedBox(
+          height: 3,
+        ),
+        Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.w500),
+        )
+      ],
+    );
+  }
+
+  Container cardWidget() {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 18, horizontal: 70),
+      height: 100,
+      width: 100,
+      decoration: BoxDecoration(
+          color: Color.fromARGB(255, 255, 255, 255),
+          borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        children: [
+          Image.asset(
+            "assets/images/code_qr.png",
+            width: 130,
+            height: 130,
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.photo_camera, size: 14),
+              SizedBox(
+                width: 3,
+              ),
+              Text(
+                "Scanner",
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
+              )
+            ],
           )
         ],
       ),
