@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:contacts_service/contacts_service.dart';
 
 class TransferPage extends StatefulWidget {
   @override
@@ -6,51 +7,59 @@ class TransferPage extends StatefulWidget {
 }
 
 class _TransferPageState extends State<TransferPage> {
-  List<Map<String, String>> contacts = [
-    {'name': 'Contact 1', 'number': '12345'},
-    {'name': 'Contact 2', 'number': '67890'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    {'name': 'Contact 3', 'number': '24680'},
-    // Ajoutez d'autres contacts ici
-  ];
-
-  List<Map<String, String>> filteredContacts = [];
+  late ScrollController _scrollController;
+  List<Contact> _contacts = [];
+  List<Contact> _filteredContacts = [];
+  bool _isLoadingContacts = false;
 
   @override
   void initState() {
     super.initState();
-    filteredContacts = contacts;
+    _scrollController = ScrollController();
+    _loadContacts();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  Future<void> _loadContacts() async {
+    if (!_isLoadingContacts) {
+      setState(() => _isLoadingContacts = true);
+      Iterable<Contact> newContacts = await ContactsService.getContacts(
+        withThumbnails: false,
+      );
+      setState(() {
+        _contacts.addAll(newContacts);
+        _filteredContacts = _contacts;
+        _isLoadingContacts = false;
+      });
+    }
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      _loadContacts();
+    }
   }
 
   void filterContacts(String query) {
     setState(() {
-      filteredContacts = contacts
+      _filteredContacts = _contacts
           .where((contact) =>
-              contact['name']!.toLowerCase().contains(query.toLowerCase()))
+              contact.displayName?.toLowerCase().contains(query.toLowerCase()) ?? false)
           .toList();
     });
   }
 
-  Widget _buildContactWidget(String name, String number) {
+  Widget _buildContactWidget(Contact contact) {
     return ListTile(
       leading: CircleAvatar(
-        // Icône de profil (peut être remplacé par l'icône souhaité)
         child: Icon(Icons.person),
       ),
-      title: Text(name),
-      subtitle: Text(number),
+      title: Text(contact.displayName ?? 'No Name'),
+      subtitle: Text(
+        contact.phones!.isNotEmpty ? contact.phones?.first.value ?? 'No phone number' : 'No phone number',
+      ),
       onTap: () {
-        // Action à effectuer lors du clic sur un contact
-        // Par exemple, sélectionner le contact pour le transfert
+        // Action lors du clic sur le contact (sélection, transfert, etc.)
       },
     );
   }
@@ -60,8 +69,7 @@ class _TransferPageState extends State<TransferPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Transfert'),
-        backgroundColor:
-            Color(0xFF4B42DD), // Utilisation de la couleur principale
+        backgroundColor: Color(0xFF4B42DD),
       ),
       body: Column(
         children: [
@@ -83,12 +91,15 @@ class _TransferPageState extends State<TransferPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: filteredContacts.length,
+              controller: _scrollController,
+              itemCount: _filteredContacts.length + 1,
               itemBuilder: (context, index) {
-                return _buildContactWidget(
-                  filteredContacts[index]['name']!,
-                  filteredContacts[index]['number']!,
-                );
+                if (index == _filteredContacts.length) {
+                  return _isLoadingContacts
+                      ? Center(child: CircularProgressIndicator())
+                      : SizedBox.shrink();
+                }
+                return _buildContactWidget(_filteredContacts[index]);
               },
             ),
           ),
