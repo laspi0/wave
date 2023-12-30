@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wave/utils/card.dart';
 import 'package:wave/utils/constants.dart';
 import 'package:wave/utils/optionsGlobal.dart';
-import 'package:wave/utils/transactions.dart';
+import 'package:wave/utils/transactionWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           right: 10,
                           child: Column(
                             children: [
-                              optionGlobalWidget(),
+                              optionGlobalWidget(context),
                             ],
                           ))
                     ],

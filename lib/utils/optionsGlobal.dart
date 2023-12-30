@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:wave/screens/transfert.dart';
 import 'package:wave/utils/options.dart';
-import 'package:wave/utils/transactions.dart';
+import 'package:wave/utils/transactionWidget.dart';
 
-Column optionGlobalWidget() {
+Column optionGlobalWidget(BuildContext context) {
   return Column(
     children: [
       Container(
-        constraints: BoxConstraints(minHeight: 1000),
+        constraints: const BoxConstraints(minHeight: 1000),
         color: const Color.fromARGB(255, 255, 255, 255),
         width: double.infinity,
         // height: 1000,
@@ -18,10 +19,18 @@ Column optionGlobalWidget() {
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
               children: [
-                optionWidget(
-                    icon: Icons.person_2,
-                    color: Colors.blue,
-                    text: "Transfert"),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TransferPage()),
+                    );
+                  },
+                  child: optionWidget(
+                      icon: Icons.person_2,
+                      color: Colors.blue,
+                      text: "Transfert"),
+                ),
                 optionWidget(
                     icon: Icons.shopping_cart_sharp,
                     color: Colors.orange,
@@ -39,7 +48,7 @@ Column optionGlobalWidget() {
                     color: Colors.green,
                     text: "Cadeaux"),
                 GestureDetector(
-                  onTap: () => {print("Gesture")},
+                  onTap: () {},
                   child: optionWidget(
                       icon: Icons.credit_card_outlined,
                       color: Colors.teal,
@@ -47,21 +56,25 @@ Column optionGlobalWidget() {
                 ),
               ],
             ),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
-            transtions(),
+            TransitionsWidget(),
           ],
         ),
       ),
     ],
   );
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const Scaffold(),
+    );
+  }
 }
