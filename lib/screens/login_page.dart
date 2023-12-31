@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             _buildNumberButton('0'),
-            Icon(Icons.fingerprint_rounded)
+            Icon(Icons.fingerprint_rounded),
           ],
         ),
       ],

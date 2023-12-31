@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wave/screens/transfert.dart';
+import 'package:wave/utils/credit_card.dart';
 import 'package:wave/utils/options.dart';
 import 'package:wave/utils/transactionWidget.dart';
 
@@ -56,6 +57,7 @@ Column optionGlobalWidget(BuildContext context) {
                 ),
               ],
             ),
+            // credit(),
             TransitionsWidget(),
           ],
         ),

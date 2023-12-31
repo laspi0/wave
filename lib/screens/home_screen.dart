@@ -46,25 +46,28 @@ class _HomeScreenState extends State<HomeScreen> {
                               text: const TextSpan(
                                   text: "500.000",
                                   style: TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 23,
                                     color: Colors.white,
+                                    fontFamily: "Poppins",
                                     fontWeight: FontWeight.w900,
                                   ),
                                   children: [
                                   TextSpan(
                                       text: "F",
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 15,
+                                        fontFamily: "Poppins",
                                         color: Colors.white,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w700,
                                       ))
                                 ]))
                           : const Text(
                               "••••••••",
                               style: TextStyle(
-                                fontSize: 35,
+                                fontSize: 23,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w600,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w900,
                               ),
                             ),
                       const SizedBox(
