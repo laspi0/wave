@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave/screens/cardScreen.dart';
 import 'package:wave/screens/transfert.dart';
 import 'package:wave/utils/credit_card.dart';
 import 'package:wave/utils/options.dart';
@@ -49,7 +50,12 @@ Column optionGlobalWidget(BuildContext context) {
                     color: Colors.green,
                     text: "Cadeaux"),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CardScreen()),
+                    );
+                  },
                   child: optionWidget(
                       icon: Icons.credit_card_outlined,
                       color: Colors.teal,
