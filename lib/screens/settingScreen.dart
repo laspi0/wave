@@ -217,7 +217,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Icon(
-                        Icons.shield,
+                        Icons.security,
                         size: 35,
                       ),
                       Text(
