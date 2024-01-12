@@ -50,7 +50,7 @@ Column optionGlobalWidget(BuildContext context) {
                     color: Colors.green,
                     text: "Cadeaux"),
                 GestureDetector(
-                  onTap: () {
+                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => CardScreen()),

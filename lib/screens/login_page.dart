@@ -7,7 +7,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final String correctPin = '1234';
+  final String correctPin = '4102';
   final TextEditingController pinController = TextEditingController();
 
   @override
@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           _buildKeyboard(),
         ],
       ),
@@ -116,15 +116,13 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                print("Mot de passe oublié ?");
-              },
+              onTap: () {},
               child: Text(
-                'Oublié ?',
+                'OUBLIÉ ?',
                 style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
             ),

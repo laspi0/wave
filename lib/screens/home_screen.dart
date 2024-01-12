@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wave/screens/scanScreen.dart';
+import 'package:wave/screens/settingScreen.dart';
 import 'package:wave/utils/card.dart';
 import 'package:wave/utils/constants.dart';
 import 'package:wave/utils/optionsGlobal.dart';
-import 'package:wave/utils/transactionWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,7 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
               floating: true,
               expandedHeight: 100,
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingScreen()),
+                  );
+                },
                 icon: const Icon(
                   Icons.settings,
                   color: Colors.white,
@@ -114,16 +120,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30))),
                       ),
-                      Container(
-                        height: 200,
-                        // width:
-                        margin: const EdgeInsets.symmetric(horizontal: 50),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.blue,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScanScreen()),
+                          );
+                        },
+                        child: Container(
+                          height: 200,
+                          // width:
+                          margin: const EdgeInsets.symmetric(horizontal: 50),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Colors.blue,
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(child: cardWidget()),
                         ),
-                        width: MediaQuery.of(context).size.width,
-                        child: Container(child: cardWidget()),
                       ),
                       Positioned(
                           top: 200,
