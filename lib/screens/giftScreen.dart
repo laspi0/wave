@@ -93,6 +93,7 @@ class _GiftScreenState extends State<GiftScreen> {
   }
 }
 
+// ignore: camel_case_types
 class boxGift1 extends StatelessWidget {
   const boxGift1({
     super.key,
@@ -128,7 +129,7 @@ class boxGift1 extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w500),
                 )),
               ),
-              Container(
+              SizedBox(
                 height: 110,
                 width: 110,
                 // color: Colors.amber,
@@ -146,11 +147,11 @@ class boxGift1 extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(
+          const Text(
             "Pour déverouiller",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          Text("Payez 1.500F ou plus chez un marchand (0/1)"),
+          const Text("Payez 1.500F ou plus chez un marchand (0/1)"),
         ],
       ),
     );
